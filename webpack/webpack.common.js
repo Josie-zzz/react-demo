@@ -39,8 +39,13 @@ module.exports = {
             },
             {
                 // 解析图片等资源文件
-                test: /\.(png|jpg|svg)$/i,
+                test: /\.(png|jpg|svg|wav)$/i,
                 type: 'asset/resource',
+            },
+            {
+                // 解析图片等资源文件
+                test: /\.(m3u8)$/i,
+                type: 'asset/source',
             },
         ],
     },

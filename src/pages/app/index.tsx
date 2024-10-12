@@ -1,8 +1,6 @@
 import React, { useEffect, useRef, useState, useTransition, Suspense } from 'react'
-import { TestState, TestWorkLoop, TestHook } from '@/router'
 import { HashRouter as Router, Route, Switch, Link, Redirect } from 'react-router-dom'
-
-console.log(<TestState />)
+import { pathOptions } from '@/utils/routerConfig'
 
 const App = () => {
     return (
@@ -11,23 +9,27 @@ const App = () => {
                 <div>
                     <nav>
                         <ul>
-                            <li>
-                                <Link to="/testState">testState</Link>
-                            </li>
-                            <li>
-                                <Link to="/testWorkLoop">testWorkLoop</Link>
-                            </li>
-                            <li>
-                                <Link to="/testHook">TestHook</Link>
-                            </li>
+                            {
+                                pathOptions.map((v => {
+                                    return (
+                                        <li key={v.path}>
+                                            <Link to={v.path}>{v.name}</Link>
+                                        </li>
+                                    )
+                                }))
+                            }
                         </ul>
                     </nav>
                     <Suspense>
                         <Switch>
                             <Redirect path='/' to="/testWorkLoop" exact />
-                            <Route path="/testState" component={TestState} exact />
-                            <Route path="/testWorkLoop" component={TestWorkLoop} exact />
-                            <Route path="/testHook" component={TestHook} exact />
+                            {
+                                pathOptions.map((v => {
+                                    return (
+                                        <Route path={v.path} component={v.component} exact={v?.exact || true} />
+                                    )
+                                }))
+                            }
                         </Switch>
                     </Suspense>
                 </div>

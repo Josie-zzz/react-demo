@@ -1,13 +1,14 @@
 {
     "compilerOptions": {
-        "target": "es5",
+        "target": "es6",
         // TypeScript会把 JSX 语法转换为 React.createElement
         "jsx": "react",
-        "module": "esnext",
+        "module": "ESNext",
         // 允许从没有设置默认导出的模块中默认导入，不用的话，比如 引用react 会飘红
         "allowSyntheticDefaultImports": true,
         // 模块解析策略，如果不配置的话，导入文件不会自动寻找其 index 文件
         "moduleResolution": "Node",
+        "esModuleInterop": true, // 允许使用 import 语句导入 CommonJS 模块
         // 基准路径
         "baseUrl": ".",
         "allowJs": true,
@@ -17,7 +18,8 @@
         // 这里配置的路径会将基准路径拼在一起，比如下面其实就是：./src/*
         // 注意：这里配置的是让 ts 静态类型解析的，还得在 webpack 的resolve在配置一次，那个用于 webpack 打包时路径解析的
         "paths": {
-            "@/*": ["src/*"],
+            "@/*": ["src/*"]
         }
-    }
+    },
+    "include": ["src/**/*", "server/**/*"],
 }

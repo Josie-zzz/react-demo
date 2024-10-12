@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useSyncExternalStore } from "react";
 
 let sum = 0
 let count = 100
@@ -66,6 +66,9 @@ interface IP {
 }
 
 const Step: React.FC<IP> = (props) => {
+    // const store = useSyncExternalStore((callback) => {
+
+    // })
     
     // const bbb = React.cloneElement(props.children, {
     //     get () {
